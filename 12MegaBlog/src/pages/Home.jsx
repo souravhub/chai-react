@@ -8,7 +8,7 @@ function Home() {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		appwriteService.getPosts((posts) => {
+		appwriteService.getPosts().then((posts) => {
 			if (posts) {
 				setPosts(posts.documents);
 			}

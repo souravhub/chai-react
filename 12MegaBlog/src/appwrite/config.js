@@ -68,6 +68,7 @@ export class Service {
 	}
 
 	async getPosts(queries = [Query.equal('status', 'active')]) {
+		console.log(queries, 'queries');
 		try {
 			return this.databases.listDocuments(
 				conf.appwriteDatabaseId,

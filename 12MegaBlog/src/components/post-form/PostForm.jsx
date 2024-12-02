@@ -16,7 +16,7 @@ function PostForm({ post }) {
 			},
 		});
 	const navigate = useNavigate();
-	const userData = useSelector((state) => state.user.userData);
+	const userData = useSelector((state) => state.auth.userData);
 
 	const submit = async (data) => {
 		if (post) {
@@ -57,7 +57,7 @@ function PostForm({ post }) {
 			return value
 				.trim()
 				.toLowerCase()
-				.replace(/^[a-zA-Z\d\s]+/g, '-')
+				.replace(/[^a-zA-Z\d\s]+/g, '-')
 				.replace(/\s/g, '-');
 
 		return '';
@@ -79,7 +79,7 @@ function PostForm({ post }) {
 			subscription.unsubscribe();
 		};
 	}, [watch, slugTransform, setValue]);
-
+	console.log(post, 'post');
 	return (
 		<form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
 			<div className="w-2/3 px-2">
